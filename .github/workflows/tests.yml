@@ -20,7 +20,7 @@ jobs:
           echo "Code looks alright."
 
   tests:
-    name: ${{ matrix.os }}, Python ${{ matrix.python-version }}
+    name: "Tests: ${{ matrix.os }}, Python ${{ matrix.python-version }}"
     needs: code-quality
     runs-on: ${{ matrix.os }}
     strategy:
@@ -42,6 +42,7 @@ jobs:
 
   notify:
     name: Notify failed build
+    needs: [code-quality, tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
