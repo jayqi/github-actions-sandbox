@@ -48,3 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/failed_build_issue_template.md
+      - name: Print
+        run: |
+          echo github.workflow: ${{ github.workflow }}
+          echo github.run_id: ${{ github.run_id }}
+          echo github.run_number: ${{ github.run_number }}
