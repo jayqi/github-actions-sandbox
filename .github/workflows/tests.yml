@@ -43,7 +43,7 @@ jobs:
   notify:
     name: Notify failed build
     needs: [code-quality, tests]
-    if: failure()
+    if: failure() && github.event.pull_request == null
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
