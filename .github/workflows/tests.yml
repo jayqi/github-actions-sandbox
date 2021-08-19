@@ -31,11 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
       - name: Run tests
         run: |
           echo "Tests passed."
@@ -43,6 +38,7 @@ jobs:
   notify:
     name: Notify failed build
     needs: [code-quality, tests]
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
