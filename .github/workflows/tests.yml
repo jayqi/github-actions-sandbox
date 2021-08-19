@@ -35,6 +35,11 @@ jobs:
         run: |
           echo "Tests passed."
 
+      - name: Fail for Python 3.8
+        if: matrix.python-version == 3.8
+        run: |
+          exit 1
+
   notify:
     name: Notify failed build
     needs: [code-quality, tests]
