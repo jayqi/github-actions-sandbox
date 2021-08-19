@@ -1,2 +1,3 @@
-# github-actions-demo
-Reference implementation of GitHub Actions
+# github-actions-sandbox
+
+Experimentation and reference implementations for GitHub Actions workflows.

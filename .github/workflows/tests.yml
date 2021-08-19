@@ -17,7 +17,7 @@ jobs:
 
       - name: Lint package
         run: |
-          echo "Code smells."
+          echo "Your code stinks."
           exit 1
 
   tests:
