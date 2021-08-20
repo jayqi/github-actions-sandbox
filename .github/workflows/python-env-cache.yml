@@ -1,4 +1,4 @@
-name: pip-cache
+name: python-cache
 
 on:
   pull_request:
