@@ -19,10 +19,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Get pip cache path
+        id: pip_cache_dir
+        run: |
+          echo "::set-output name=PIP_CACHE_DIR::$(python -m pip cache dir)"
       - name: Attach pip wheels cache
         uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
+          path: ${{ steps.pip_cache_dir.outputs.PIP_CACHE_DIR }}
           key: ${{ matrix.os }}-${{ matrix.python-version }}
 
       - name: Install dependencies
@@ -53,10 +57,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Get pip cache path
+        id: pip_cache_dir
+        run: |
+          echo "::set-output name=PIP_CACHE_DIR::$(python -m pip cache dir)"
       - name: Attach pip wheels cache
         uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
+          path: ${{ steps.pip_cache_dir.outputs.PIP_CACHE_DIR }}
           key: ${{ matrix.os }}-${{ matrix.python-version }}
 
       - name: Install dependencies
