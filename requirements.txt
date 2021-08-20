@@ -24,3 +24,5 @@ pytest
 pytest-cov
 tqdm
 wheel
+
+quickhttp==0.1.0
