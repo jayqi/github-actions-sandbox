@@ -1,3 +1,3 @@
 # github-actions-sandbox
 
-Experimentation and reference implementations for GitHub Actions workflows.
+Personal sandbox for experimentation and reference implementations for GitHub Actions workflows.
