@@ -26,7 +26,7 @@ jobs:
       - name: Check that versions match
         run: |
           echo "${{ github.event.release.tag_name }}"
-          PACKAGE_VERSION=$(cat docs/docs/version.md)
+          PACKAGE_VERSION=$(cat docs/docs/version.md | tr -d '\n')
           echo $PACKAGE_VERSION
           [ ${{ github.event.release.tag_name }} == "v$PACKAGE_VERSION" ] || { exit 1; }
 
