@@ -36,7 +36,7 @@ jobs:
           echo $PACKAGE_VERSION
           [ ${{ github.event.release.tag_name }} == "v$PACKAGE_VERSION" ] || { exit 1; }
 
-      - name: mike
+      - name: Stage docs on gh-pages
         working-directory: docs
         run: |
           git config --global user.name github-actions[bot]
