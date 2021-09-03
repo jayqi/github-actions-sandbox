@@ -1,4 +1,4 @@
-name: docs-release
+name: docs-main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build and publish new release
+    name: Build and publish new dev docs
     runs-on: "ubuntu-latest"
 
     steps:
@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
+          pip install -r requirements.txt
 
       - name: mike
         run: |
