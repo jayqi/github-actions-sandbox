@@ -12,8 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -39,6 +37,7 @@ jobs:
       - name: Stage docs on gh-pages
         working-directory: docs
         run: |
+          git fetch origin gh-pages --depth=1
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
