@@ -31,5 +31,6 @@ jobs:
           [ ${{ github.event.release.tag_name }} == "v$PACKAGE_VERSION" ] || { exit 1; }
 
       - name: mike
+        working-directory: docs
         run: |
           mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
