@@ -23,5 +23,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: mike
+        working-directory: docs
         run: |
           mike deploy --push dev
