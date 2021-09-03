@@ -42,7 +42,7 @@ jobs:
           git fetch origin gh-pages --depth=1
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          mike deploy --push --update-aliases \
+          mike deploy --push --update-aliases --no-redirect \
             ${{ steps.version.outputs.major_minor_version }} \
             stable \
             --title=${{ github.event.release.tag_name }}
