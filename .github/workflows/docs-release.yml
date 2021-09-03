@@ -39,8 +39,8 @@ jobs:
       - name: Stage docs on gh-pages
         working-directory: docs
         run: |
-          git config --global user.name github-actions[bot]
-          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
 
   deploy:
