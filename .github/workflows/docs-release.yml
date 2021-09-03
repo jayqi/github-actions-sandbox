@@ -33,4 +33,6 @@ jobs:
       - name: mike
         working-directory: docs
         run: |
+          git config --global user.name GitHub Actions
+          git config --global user.email noreply@github.com
           mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest

@@ -7,6 +7,7 @@ theme:
 
 nav:
   - Home: "index.md"
+  - Version: "version.md"
 
 markdown_extensions:
   - pymdownx.highlight:
