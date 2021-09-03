@@ -42,13 +42,10 @@ jobs:
           git fetch origin gh-pages --depth=1
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          # Replace docs with same major-minor version
-          mike retitle ${{ steps.version.outputs.major_minor_version }} ${{ github.event.release.tag_name }} \
-            || echo "No alias ${{ steps.version.outputs.major_minor_version }}"
           mike deploy --push --update-aliases \
-            ${{ github.event.release.tag_name }} \
+            ${{ steps.version.outputs.major_minor_version }} \
             stable \
-            ${{ steps.version.outputs.major_minor_version }}
+            --title=${{ github.event.release.tag_name }}
 
   deploy:
     name: Deploy docs to Netlify
