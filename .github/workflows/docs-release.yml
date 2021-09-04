@@ -51,7 +51,7 @@ jobs:
           mike deploy --push --update-aliases --no-redirect \
             ${{ steps.version.outputs.major_minor_version }} \
             stable \
-            --title=${{ github.event.release.tag_name }}
+            --title="${{ github.event.release.tag_name }} (stable)"
 
   deploy:
     name: Deploy docs to Netlify
