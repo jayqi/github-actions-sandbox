@@ -1,0 +1,21 @@
+name: inspect-context
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "*/10 * * * *" # every 10th minute
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Inspect Context"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print event info
+        run: |
+          echo github.event ${{ github.event }}
+          echo github.event_name ${{ github.event_name }}
+          echo github.event_path ${{ github.event_path }}
