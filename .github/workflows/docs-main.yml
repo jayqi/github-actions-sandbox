@@ -3,10 +3,21 @@ name: docs-main
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      build:
+        description: Whether to build "latest" from target branch
+        required: false
+        default: "true"
+      deploy:
+        description: Whether to deploy gh-pages to Netlify
+        required: false
+        default: "true"
 
 jobs:
   build:
     name: Build docs from main branch
+    if: ${{ github.event.inputs.build }} == 'true'
     runs-on: "ubuntu-latest"
 
     steps:
@@ -36,6 +47,7 @@ jobs:
 
   deploy:
     name: Deploy docs to Netlify
+    if: ${{ github.event.inputs.build }} == 'true'
     needs: build
     runs-on: "ubuntu-latest"
 
