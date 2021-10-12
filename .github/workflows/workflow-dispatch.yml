@@ -1,0 +1,34 @@
+name: workflow-dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      str_input:
+        description: "String input"
+        required: false
+        default: "Hello world"
+      job2:
+        description: "Boolean input"
+        required: false
+        default: true
+
+jobs:
+  build:
+    name: "Inspect event input"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print event info
+        run: |
+          echo github.event.inputs.str_input ${{ github.event.inputs.str_input }}
+
+  job2:
+  build:
+    name: "Inspect event input"
+    if: ${{ github.event.inputs.job2 }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print event info
+        run: |
+          echo github.event.inputs.job2 ${{ github.event.inputs.job2 }}
