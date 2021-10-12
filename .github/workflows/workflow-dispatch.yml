@@ -23,7 +23,7 @@ jobs:
           echo github.event.inputs.str_input ${{ github.event.inputs.str_input }}
 
   job2:
-    name: "Inspect event input"
+    name: "job2"
     if: ${{ github.event.inputs.job2 }}
     runs-on: ubuntu-latest
 
