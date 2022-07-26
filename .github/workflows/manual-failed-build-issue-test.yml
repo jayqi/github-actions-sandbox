@@ -10,6 +10,6 @@ jobs:
 
     steps:
       - name: Notify failed build
-        uses: jayqi/failed-build-issue-action@v0.0.1
+        uses: jayqi/failed-build-issue-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
