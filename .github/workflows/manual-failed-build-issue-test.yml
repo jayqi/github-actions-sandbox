@@ -2,6 +2,12 @@ name: manual-failed-build-issue-test
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version of jayqi/failed-build-issue-action to trigger'
+        required: true 
+        type: string
+        default: main
 
 jobs:
   build:
@@ -10,6 +16,6 @@ jobs:
 
     steps:
       - name: Notify failed build
-        uses: jayqi/failed-build-issue-action@main
+        uses: jayqi/failed-build-issue-action@${{ inputs.version }} 
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
