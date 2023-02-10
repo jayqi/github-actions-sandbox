@@ -1,0 +1,28 @@
+name: test-failed-build-issue-action
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_pin:
+        description: "Version to use (including @)"
+        required: false
+        type: "string"
+
+jobs:
+  failing-test:
+    name: Failing Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run failing test
+        run: |
+          bash -c 'exit 1'
+
+  notify:
+    name: Notify failed build
+    needs: failing-test
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jayqi/failed-build-issue-action${{ inputs.version_pin }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
