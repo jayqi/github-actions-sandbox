@@ -23,6 +23,6 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
     steps:
-      - uses: jayqi/failed-build-issue-action${{ inputs.version_pin }}
+      - uses: "jayqi/failed-build-issue-action${{ inputs.version_pin }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
