@@ -30,6 +30,6 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - uses: jayqi/failed-build-issue-action@main
+      - uses: ./
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
