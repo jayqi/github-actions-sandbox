@@ -1,4 +1,4 @@
-name: test-failed-build-issue-action
+name: test-failed-build-issue-action-v1
 
 on:
   workflow_dispatch:
