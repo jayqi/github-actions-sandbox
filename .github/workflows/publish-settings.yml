@@ -1,0 +1,40 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publishDev:
+        description: 'Whether to publish image as cpu-{sha} and gpu-{sha}'
+        required: true
+        default: false
+        type: boolean
+
+env:
+  SHOULD_PUBLISH_LATEST: ${{ github.ref == 'refs/heads/main' && vars.PUBLISH_LATEST_ON_MAIN != '' }}
+  SHOULD_PUBLISH: ${{ github.ref == 'refs/heads/main' && vars.PUBLISH_LATEST_ON_MAIN != '' || inputs.publishDev }}
+
+jobs:
+  build:
+    name: Build, Test, and Publish Image
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        proc: ["cpu", "gpu"]
+    env:
+      SHA_TAG: ${{ matrix.proc }}-${{ github.sha }}
+      LATEST_TAG: ${{ matrix.proc }}-latest
+
+    steps:
+
+      - name: Check SHOULD_PUBLISH
+        if: ${{ env.SHOULD_PUBLISH }}
+        run: |
+          echo "hit"
+
+      - name: Check SHOULD_PUBLISH_LATEST
+        if: ${{ env.SHOULD_PUBLISH_LATEST }}
+        run: |
+          echo "hit"
