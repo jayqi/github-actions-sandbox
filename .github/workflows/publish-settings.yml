@@ -32,11 +32,11 @@ jobs:
     steps:
 
       - name: Check SHOULD_PUBLISH
-        if: ${{ env.SHOULD_PUBLISH }}
+        if: ${{ fromJson(env.SHOULD_PUBLISH) }}
         run: |
           echo "hit"
 
       - name: Check SHOULD_PUBLISH_LATEST
-        if: ${{ env.SHOULD_PUBLISH_LATEST }}
+        if: ${{ fromJson(env.SHOULD_PUBLISH_LATEST) }}
         run: |
           echo "hit"
