@@ -1,0 +1,19 @@
+name: step-on-failure
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Throw error
+        run: |
+          exit 1
+      - name: Run on failure
+        if: failure()
+        run: |
+          echo "Hello"
+  
