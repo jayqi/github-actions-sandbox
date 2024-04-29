@@ -59,8 +59,8 @@ jobs:
           sw_vers
           uname -a
 
-      - name:
-        if: runner.os == 'macos-latest'
+      - name: Install libomp with Homebrew
+        if: runner.os == 'macOS'
         run: |
           brew install libomp
 
