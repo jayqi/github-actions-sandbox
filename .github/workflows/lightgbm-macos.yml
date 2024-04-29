@@ -17,6 +17,7 @@ jobs:
       - name: Print system information
         run: |
           sw_vers
+          uname -a
 
       - name: Install LightGBM with pip
         run: |
@@ -36,6 +37,7 @@ jobs:
       - name: Print system information
         run: |
           sw_vers
+          uname -a
 
       - name: Install LightGBM with pip
         run: |
