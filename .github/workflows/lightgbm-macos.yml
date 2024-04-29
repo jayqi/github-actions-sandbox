@@ -69,7 +69,7 @@ jobs:
           echo "runner.arch=${{ runner.arch }}"
 
       - name: Install libomp with Homebrew
-        if: runner.os == 'macOS'
+        if: ${{ runner.os == 'macOS' && runner.arch == 'ARM64' }}
         run: |
           brew install libomp
 
