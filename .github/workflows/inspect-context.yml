@@ -1,11 +1,11 @@
 name: inspect-context
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-  schedule:
-    - cron: "0 12 * * 1" # Monday at 12
+  # push:
+  #   branches: [main]
+  # pull_request:
+  # schedule:
+  #   - cron: "0 12 * * 1" # Monday at 12
   workflow_dispatch:
 
 jobs:
