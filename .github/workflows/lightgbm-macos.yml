@@ -18,6 +18,9 @@ jobs:
         run: |
           sw_vers
           uname -a
+          echo "runner.name=${{ runner.name }}"
+          echo "runner.os=${{ runner.os }}"
+          echo "runner.arch=${{ runner.arch }}"
 
       - name: Install LightGBM with pip
         run: |
@@ -38,6 +41,9 @@ jobs:
         run: |
           sw_vers
           uname -a
+          echo "runner.name=${{ runner.name }}"
+          echo "runner.os=${{ runner.os }}"
+          echo "runner.arch=${{ runner.arch }}"
 
       - name: Install LightGBM with pip
         run: |
@@ -58,6 +64,9 @@ jobs:
         run: |
           sw_vers
           uname -a
+          echo "runner.name=${{ runner.name }}"
+          echo "runner.os=${{ runner.os }}"
+          echo "runner.arch=${{ runner.arch }}"
 
       - name: Install libomp with Homebrew
         if: runner.os == 'macOS'
