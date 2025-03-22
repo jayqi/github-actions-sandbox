@@ -1,6 +1,12 @@
 name: conditional-os-matrix
 
 on:
+  push:
+    branches:
+      - test-conditional-os-matrix
+  pull_request:
+  schedule:
+    - cron: '27 3 * * *'
   workflow_dispatch:
     inputs:
       os:
@@ -24,12 +30,14 @@ jobs:
         id: step
         run: |
           if [[ ${{ github.event_name }} = 'scheduled' ]]; then
-            echo 'os_matrix=["ubuntu-latest", "macos-latest"]' >> "$GITHUB_OUTPUT"
+            MATRIX='["ubuntu-latest", "macos-latest"]'
           elif [[ ${{ github.event_name }} = 'workflow_dispatch' ]]; then
-            echo 'os_matrix=["${{ inputs.os }}"]' >> "$GITHUB_OUTPUT"
+            MATRIX='["${{ inputs.os }}"]'
           else
-            echo 'os_matrix=["ubuntu-latest"]' >> "$GITHUB_OUTPUT"
+            MATRIX='["ubuntu-latest"]'
           fi
+          echo "$MATRIX"
+          echo "os_matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   do-work:
     name: "Do work"
