@@ -1,4 +1,4 @@
-name: conditional-os-matrix
+name: conditional-os-matrix-inline
 
 on:
   workflow_dispatch:
