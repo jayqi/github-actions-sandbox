@@ -1,8 +1,6 @@
 name: docs-main
 
 on:
-  # push:
-  #   branches: [main]
   workflow_dispatch:
     inputs:
       build:
