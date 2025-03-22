@@ -1,0 +1,45 @@
+name: conditional-os-matrix
+
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        description: 'OS to run on'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+          - ubuntu-latest
+          - macos-latest
+
+
+jobs:
+  set-up-os-matrix:
+    name: "Set up OS matrix"
+    runs-on: ubuntu-latest
+    outputs:
+      os_matrix: ${{ steps.step.outputs.os_matrix }}
+    steps:
+      - name: Set up OS matrix
+        id: step
+        run: |
+          if [[ ${{ github.event_name }} = 'scheduled' ]]; then
+            echo 'os_matrix=["ubuntu-latest", "macos-latest"]' >> "$GITHUB_OUTPUT"
+          elif [[ ${{ github.event_name }} = 'workflow_dispatch' ]]; then
+            echo 'os_matrix=["${{ inputs.os }}"]' >> "$GITHUB_OUTPUT"
+          else
+            echo 'os_matrix=["ubuntu-latest"]' >> "$GITHUB_OUTPUT"
+          fi
+
+  do-work:
+    name: "Do work"
+    needs: set-up-os-matrix
+    runs-on: ${{ fromJson(needs.set-up-os-matrix.outputs.os_matrix) }}
+
+    steps:
+      - name: Print event info
+        run: |
+          echo github.event ${{ github.event }}
+          echo github.event_name ${{ github.event_name }}
+          echo github.event_path ${{ github.event_path }}
+          echo runner.os ${{ runner.os }}
