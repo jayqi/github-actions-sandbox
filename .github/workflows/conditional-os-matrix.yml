@@ -6,7 +6,7 @@ on:
       - test-conditional-os-matrix
   pull_request:
   schedule:
-    - cron: '27 3 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       os:
