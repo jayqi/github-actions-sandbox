@@ -1,12 +1,12 @@
 name: conditional-os-matrix
 
 on:
-  push:
-    branches:
-      - test-conditional-os-matrix
-  pull_request:
-  schedule:
-    - cron: '*/5 * * * *'
+  # push:
+  #   branches:
+  #     - test-conditional-os-matrix
+  # pull_request:
+  # schedule:
+  #   - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       os:
