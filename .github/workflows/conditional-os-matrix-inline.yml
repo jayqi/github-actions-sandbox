@@ -1,0 +1,31 @@
+name: conditional-os-matrix
+
+on:
+  workflow_dispatch:
+    inputs:
+      include-macos:
+        description: 'Include macos-latest'
+        required: true
+        type: boolean
+        default: false
+
+
+jobs:
+  do-work:
+    name: "Do work"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [
+          "ubuntu-latest",
+          ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.include-macos && 'macos-latest' || '' }}
+        ]
+
+    steps:
+      - name: Print event info
+        run: |
+          echo github.event : ${{ github.event }}
+          echo github.event_name : ${{ github.event_name }}
+          echo github.event_path : ${{ github.event_path }}
+          echo matrix.os : ${{ matrix.os }}
+          echo runner.os : ${{ runner.os }}
