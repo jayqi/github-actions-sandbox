@@ -18,7 +18,7 @@ jobs:
       matrix:
         os: [
           "ubuntu-latest",
-          ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.include-macos && 'macos-latest' || '' }}
+          ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.include-macos && '"macos-latest",' || '' }}
         ]
 
     steps:
